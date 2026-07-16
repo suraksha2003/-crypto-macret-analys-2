@@ -1,0 +1,87 @@
+import json
+
+# Create a comprehensive data structure for the crypto dashboard
+dashboard_data = {
+    "watchlist": [
+        {"symbol": "BTCUSDT", "price": 67234.50, "change_24h": 2.34, "volume": 34200000000},
+        {"symbol": "ETHUSDT", "price": 3456.78, "change_24h": -1.23, "volume": 15600000000},
+        {"symbol": "SOLUSDT", "price": 178.45, "change_24h": 5.67, "volume": 8900000000},
+        {"symbol": "XRPUSDT", "price": 0.6234, "change_24h": -0.45, "volume": 2100000000},
+        {"symbol": "DOGEUSDT", "price": 0.1234, "change_24h": 8.90, "volume": 4500000000},
+    ],
+    "top_gainers": [
+        {"symbol": "PEPEUSDT", "change_24h": 23.45, "price": 0.00001234},
+        {"symbol": "WIFUSDT", "change_24h": 18.90, "price": 2.345},
+        {"symbol": "BONKUSDT", "change_24h": 15.67, "price": 0.00002345},
+    ],
+    "top_losers": [
+        {"symbol": "LUNCUSDT", "change_24h": -12.34, "price": 0.0001234},
+        {"symbol": "FTTUSDT", "change_24h": -8.90, "price": 1.234},
+        {"symbol": "CELUSDT", "change_24h": -7.65, "price": 0.5678},
+    ],
+    "signals": {
+        "BTCUSDT": {
+            "signal": "BUY",
+            "confidence": 87,
+            "entry": 67100.00,
+            "stop_loss": 65800.00,
+            "take_profit_1": 68500.00,
+            "take_profit_2": 69800.00,
+            "take_profit_3": 71200.00,
+            "risk_level": "Medium",
+            "trend_strength": 78,
+            "timeframes": {
+                "1m": {"trend": "Bullish", "rsi": 62, "macd": "Bullish"},
+                "5m": {"trend": "Bullish", "rsi": 58, "macd": "Bullish"},
+                "15m": {"trend": "Bullish", "rsi": 55, "macd": "Neutral"},
+                "1H": {"trend": "Bullish", "rsi": 52, "macd": "Bullish"},
+                "4H": {"trend": "Bullish", "rsi": 48, "macd": "Bullish"},
+                "1D": {"trend": "Bullish", "rsi": 45, "macd": "Bullish"},
+            }
+        }
+    },
+    "indicators": {
+        "BTCUSDT": {
+            "rsi": 55.4,
+            "macd": {"signal": "Bullish", "histogram": 45.2, "line": 12.3},
+            "ema_20": 66800.00,
+            "ema_50": 65400.00,
+            "ema_200": 61200.00,
+            "bollinger": {"upper": 68500, "middle": 67200, "lower": 65900},
+            "vwap": 67000.00,
+            "fibonacci": {"0": 64000, "0.236": 65500, "0.382": 66200, "0.5": 67000, "0.618": 67800, "0.786": 68800, "1": 70000},
+            "atr": 1200.00,
+            "adx": 32.5,
+            "stochastic": {"k": 65.4, "d": 58.2},
+            "volume_profile": {"poc": 67200, "value_area_high": 67800, "value_area_low": 66600},
+            "order_blocks": [{"type": "bullish", "price": 66500, "strength": "high"}, {"type": "bearish", "price": 68000, "strength": "medium"}],
+            "fvg": [{"type": "bullish", "high": 67500, "low": 67300}, {"type": "bearish", "high": 66900, "low": 66700}],
+            "liquidity_zones": [{"type": "buy_side", "price": 66000}, {"type": "sell_side", "price": 68500}],
+            "support_resistance": {
+                "supports": [66000, 65000, 64000],
+                "resistances": [68000, 69000, 70000]
+            }
+        }
+    },
+    "sentiment": {
+        "fear_greed": 72,
+        "social_sentiment": "Bullish",
+        "funding_rate": 0.012,
+        "open_interest": 15400000000,
+        "long_short_ratio": 1.85
+    },
+    "news": [
+        {"title": "Bitcoin ETF Inflows Hit Record $500M in Single Day", "time": "2h ago", "sentiment": "Bullish"},
+        {"title": "SEC Approves New Crypto Custody Rules for Banks", "time": "4h ago", "sentiment": "Neutral"},
+        {"title": "Major Exchange Announces Zero-Fee Trading for Altcoins", "time": "6h ago", "sentiment": "Bullish"},
+        {"title": "Ethereum Layer 2 Solutions See 40% Growth in TVL", "time": "8h ago", "sentiment": "Bullish"},
+        {"title": "Regulatory Concerns Rise in Asian Markets", "time": "12h ago", "sentiment": "Bearish"},
+    ]
+}
+
+# Save to file
+with open('/mnt/agents/output/crypto_dashboard_data.json', 'w') as f:
+    json.dump(dashboard_data, f, indent=2)
+
+print("Data saved successfully")
+print(json.dumps(dashboard_data, indent=2)[:500])
